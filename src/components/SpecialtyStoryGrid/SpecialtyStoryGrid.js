@@ -94,6 +94,7 @@ const SportsStories = styled.div`
     grid-auto-columns: min(calc(50% - 16px), 220px);
     overflow: auto;
     margin-left: 6px;
+    max-width: 100%;
   }
 `;
 
