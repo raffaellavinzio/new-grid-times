@@ -118,11 +118,6 @@ const MainHeader = styled(MaxWidthWrapper)`
   @media ${QUERIES.tabletAndUp} {
     margin-bottom: 72px;
   }
-
-  @media ${QUERIES.laptopAndUp} {
-    margin-top: 0;
-    margin-bottom: 0;
-  }
 `;
 
 const Text = styled.span`

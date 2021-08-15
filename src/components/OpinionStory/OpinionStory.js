@@ -1,15 +1,17 @@
-import React from 'react';
-import styled from 'styled-components/macro';
+import React from "react";
+import styled from "styled-components/macro";
+
+import { QUERIES } from "../../constants";
 
 const OpinionStory = ({ id, title, author, avatar }) => {
   return (
     <a href={`/story/${id}`}>
       <Wrapper>
-        <Avatar alt="" src={avatar} />
-        <div>
+        <Avatar alt='' src={avatar} />
+        <Text>
           <AuthorName>{author}</AuthorName>
           <ArticleTitle>{title}</ArticleTitle>
-        </div>
+        </Text>
       </Wrapper>
     </a>
   );
@@ -17,6 +19,22 @@ const OpinionStory = ({ id, title, author, avatar }) => {
 
 const Wrapper = styled.article`
   color: var(--color-gray-900);
+  display: grid;
+  grid-template-columns: 1fr 48px;
+  grid-template-areas: "text avatar";
+  gap: 32px;
+
+  @media ${QUERIES.tabletOnly} {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "avatar"
+      "text";
+    gap: 8px;
+  }
+`;
+
+const Text = styled.div`
+  grid-area: text;
 `;
 
 const Avatar = styled.img`
@@ -25,6 +43,7 @@ const Avatar = styled.img`
   height: 48px;
   border-radius: 50%;
   object-fit: cover;
+  grid-area: avatar;
 `;
 
 const AuthorName = styled.p`
