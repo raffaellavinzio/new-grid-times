@@ -1,39 +1,76 @@
-import React from 'react';
-import styled from 'styled-components/macro';
-import { Menu, Search, User } from 'react-feather';
+import React from "react";
+import styled from "styled-components/macro";
+import { Menu, Search, User } from "react-feather";
 
-import { QUERIES } from '../../constants';
+import { QUERIES } from "../../constants";
 
-import MaxWidthWrapper from '../MaxWidthWrapper';
-import Logo from '../Logo';
-import Button from '../Button';
+import MaxWidthWrapper from "../MaxWidthWrapper";
+import Logo from "../Logo";
+import Button from "../Button";
+import VisuallyHidden from "../VisuallyHidden";
 
 const Header = () => {
   return (
-    <header>
-      <SuperHeader>
-        <Row>
-          <ActionGroup>
-            <button>
-              <Search size={24} />
-            </button>
-            <button>
-              <Menu size={24} />
-            </button>
-          </ActionGroup>
-          <ActionGroup>
-            <button>
-              <User size={24} />
-            </button>
-          </ActionGroup>
-        </Row>
-      </SuperHeader>
-      <MainHeader>
-        <Logo />
-      </MainHeader>
-    </header>
+    <>
+      <MobileHeader>
+        <SuperHeader>
+          <Row>
+            <ActionGroup>
+              <button>
+                <Search size={24} />
+              </button>
+              <button>
+                <Menu size={24} />
+              </button>
+            </ActionGroup>
+            <ActionGroup>
+              <button>
+                <User size={24} />
+              </button>
+            </ActionGroup>
+          </Row>
+        </SuperHeader>
+        <MainHeader>
+          <Logo />
+        </MainHeader>
+      </MobileHeader>
+      <DesktopHeader>
+        <ActionGroup>
+          <button>
+            <Search size={24} />
+          </button>
+          <button>
+            <Menu size={24} />
+          </button>
+        </ActionGroup>
+          <Logo />
+        <ButtonGroup>
+          <VisuallyHidden>subscribe button</VisuallyHidden>
+          <Button>subscribe</Button>
+          <Text>Already a subscriber?</Text>
+        </ButtonGroup>
+      </DesktopHeader>
+    </>
   );
 };
+
+const DesktopHeader = styled(MaxWidthWrapper)`
+  display: none;
+
+  @media ${QUERIES.laptopAndUp} {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    margin-top: 16px;
+    margin-bottom: 83px;
+  }
+`;
+
+const MobileHeader = styled.header`
+  @media ${QUERIES.laptopAndUp} {
+    display: none;
+  }
+`;
 
 const SuperHeader = styled.div`
   padding: 16px 0;
@@ -57,6 +94,18 @@ const ActionGroup = styled.div`
   svg {
     display: block;
   }
+
+  @media ${QUERIES.laptopAndUp} {
+    justify-self: start;
+  }
+`;
+
+const ButtonGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 32px;
+  justify-self: end;
 `;
 
 const MainHeader = styled(MaxWidthWrapper)`
@@ -65,6 +114,24 @@ const MainHeader = styled(MaxWidthWrapper)`
   justify-content: center;
   margin-top: 32px;
   margin-bottom: 48px;
+
+  @media ${QUERIES.tabletAndUp} {
+    margin-bottom: 72px;
+  }
+
+  @media ${QUERIES.laptopAndUp} {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+`;
+
+const Text = styled.span`
+  color: var(--color-gray-900);
+  font-weight: var(--font-size-normal);
+  font-size: calc(14 / 16 * 1rem);
+  font-style: italic;
+  text-decoration: underline;
+  text-align: center;
 `;
 
 export default Header;
