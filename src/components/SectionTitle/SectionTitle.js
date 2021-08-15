@@ -1,15 +1,15 @@
-import React from 'react';
+import React from "react";
 
-import styled from 'styled-components/macro';
+import styled from "styled-components/macro";
+
+import { QUERIES } from "../../constants";
 
 const SectionTitle = ({ children, cornerLink }) => {
   return (
     <Wrapper>
       <Title>{children}</Title>
       {cornerLink && (
-        <CornerLink href={cornerLink.href}>
-          {cornerLink.content}
-        </CornerLink>
+        <CornerLink href={cornerLink.href}>{cornerLink.content}</CornerLink>
       )}
     </Wrapper>
   );
@@ -19,6 +19,10 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: baseline;
+
+  @media ${QUERIES.laptopAndUp} {
+    padding-left: 16px;
+  }
 `;
 
 const Title = styled.h2`

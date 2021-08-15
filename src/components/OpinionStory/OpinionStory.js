@@ -22,7 +22,7 @@ const Wrapper = styled.article`
   display: grid;
   grid-template-columns: 1fr 48px;
   grid-template-areas: "text avatar";
-  gap: 32px;
+  gap: 16px;
 
   @media ${QUERIES.tabletOnly} {
     grid-template-columns: 1fr;

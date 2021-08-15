@@ -26,6 +26,8 @@ const Image = styled.img`
   display: block;
   width: 100%;
   margin-bottom: 12px;
+  height: 320px;
+  object-fit: cover;
 `;
 
 const Heading = styled.h2`
@@ -44,9 +46,10 @@ const Abstract = styled.p`
   overflow: hidden;
   -webkit-line-clamp: 8;
 
-  @media ${QUERIES.tabletAndUp} {
+  @media ${QUERIES.tabletOnly} {
     -webkit-line-clamp: 16;
   }
+
 `;
 
 const Location = styled.span`
