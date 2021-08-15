@@ -20,8 +20,8 @@ const Wrapper = styled.div`
   justify-content: space-between;
   align-items: baseline;
 
-  @media ${QUERIES.laptopAndUp} {
-    padding-left: 16px;
+  @media ${QUERIES.tabletAndUp} {
+    margin-bottom: 16px;
   }
 `;
 
